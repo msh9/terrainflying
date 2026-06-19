@@ -1,0 +1,84 @@
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Courier New", Courier, monospace;
+  background: #0f1115;
+  color: #f4f5f7;
+}
+
+#harness {
+  padding: 24px;
+}
+
+.tile-viewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #101622;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+.tile-image {
+  position: absolute;
+  width: 512px;
+  height: 512px;
+  image-rendering: auto;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  display: grid;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgba(15, 18, 28, 0.78);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+.scale-bar {
+  position: relative;
+  width: 120px;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f8d7da, #d1e7dd, #cff4fc, #fff3cd);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.scale-bar::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: -4px;
+  width: 2px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.overlay-title {
+  font-weight: 700;
+}
+
+.overlay-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

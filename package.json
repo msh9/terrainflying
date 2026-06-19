@@ -1,0 +1,57 @@
+{
+  "name": "web-tilelayer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Browser-based OpenLayers viewer for aviation charts and geospatial PMTiles, rendered in the chart's native projection.",
+  "keywords": [
+    "openlayers",
+    "pmtiles",
+    "map",
+    "tiles",
+    "aviation",
+    "gis",
+    "webgl",
+    "esri-102009"
+  ],
+  "homepage": "https://github.com/msh9/terrainflying#readme",
+  "bugs": {
+    "url": "https://github.com/msh9/terrainflying/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msh9/terrainflying.git"
+  },
+  "license": "MIT",
+  "author": "Michael Hughes",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:prod": "vite build && npm run verify:dist",
+    "preview": "vite preview",
+    "verify:dist": "node scripts/verify-dist.mjs",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test:e2e": "playwright test",
+    "test:visual": "playwright test --grep @visual",
+    "test:visual:update": "playwright test --grep @visual --update-snapshots"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.58.2",
+    "eslint": "^10.0.0",
+    "globals": "^17.3.0",
+    "jsdom": "^24.0.0",
+    "prettier": "^3.8.1",
+    "vite": "^7.3.1",
+    "vitest": "^4.0.18"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "lit": "^3.3.2",
+    "ol": "^10.7.0",
+    "pmtiles": "^4.4.0",
+    "proj4": "^2.20.2"
+  }
+}

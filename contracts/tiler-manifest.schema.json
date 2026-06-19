@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tile Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "crs", "extent", "view", "layers"],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "3.0"
+    },
+    "crs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value"],
+      "properties": {
+        "value": { "type": "string" },
+        "wgs84Transform": { "type": ["string", "null"] }
+      }
+    },
+    "extent": { "$ref": "#/$defs/extent" },
+    "view": { "$ref": "#/$defs/view" },
+    "layers": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/layer" }
+    }
+  },
+  "$defs": {
+    "extent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["crsUnits"],
+      "properties": {
+        "crsUnits": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": { "type": "number" },
+          "description": "[minX, minY, maxX, maxY] extent in chart CRS units."
+        }
+      }
+    },
+    "view": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["resolutions", "defaultResolution"],
+      "properties": {
+        "resolutions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "number" }
+        },
+        "defaultResolution": { "type": "number" }
+      }
+    },
+    "tile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scheme",
+        "tileSizePx",
+        "format",
+        "origin",
+        "resolutions",
+        "minResolution",
+        "maxResolution"
+      ],
+      "properties": {
+        "scheme": { "type": "string", "enum": ["custom-zxy", "pmtiles"] },
+        "tileSizePx": { "type": "integer", "const": 512 },
+        "format": { "type": "string", "enum": ["webp", "avif", "mvt", "png"] },
+        "origin": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": { "type": "number" },
+          "description": "[minX, maxY] top-left origin in chart CRS units."
+        },
+        "resolutions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "number" }
+        },
+        "minResolution": { "type": "number" },
+        "maxResolution": { "type": "number" },
+        "vectorLayerKind": { "type": "string", "enum": ["obstacles", "navaids"] },
+        "rasterStyle": { "type": "string", "enum": ["slope-shading"] },
+        "archiveUrl": { "type": "string" },
+        "archiveZoomOffset": { "type": "integer" },
+        "archiveMinZoom": { "type": "integer" },
+        "archiveMaxZoom": { "type": "integer" },
+        "archiveZoomByLocalZoom": {
+          "type": "object",
+          "additionalProperties": { "type": "integer" }
+        },
+        "urlTemplate": {
+          "type": "string",
+          "pattern": "^.*\\{z\\}/\\{x\\}/\\{y\\}\\.(webp|avif|png)$"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "scheme": { "const": "custom-zxy" }
+            }
+          },
+          "then": {
+            "required": ["urlTemplate"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "scheme": { "const": "pmtiles" }
+            }
+          },
+          "then": {
+            "required": ["archiveUrl"]
+          }
+        }
+      ]
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "effectiveDate": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "dataCutDate": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "dataWindow": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["start", "end"],
+          "properties": {
+            "start": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+            "end": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+          }
+        }
+      }
+    },
+    "layer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "zIndex", "extent", "tile", "attribution"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "optional": { "type": "boolean" },
+        "defaultVisible": { "type": "boolean" },
+        "uiLabel": { "type": "string" },
+        "groupId": { "type": "string" },
+        "groupLabel": { "type": "string" },
+        "release": { "$ref": "#/$defs/release" },
+        "zIndex": { "type": "integer" },
+        "extent": { "$ref": "#/$defs/extent" },
+        "tile": { "$ref": "#/$defs/tile" },
+        "attribution": { "type": "string" }
+      }
+    }
+  }
+}

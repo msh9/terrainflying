@@ -1,0 +1,293 @@
+{
+  "schemaVersion": "3.0",
+  "crs": {
+    "type": "wkt",
+    "value": "PROJCS[\"North_America_Lambert_Conformal_Conic\",GEOGCS[\"NAD83\",DATUM[\"North_American_Datum_1983\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6269\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4269\"]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",40],PARAMETER[\"central_meridian\",-96],PARAMETER[\"standard_parallel_1\",20],PARAMETER[\"standard_parallel_2\",60],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"ESRI\",\"102009\"]]",
+    "wgs84Transform": null
+  },
+  "extent": {
+    "crsUnits": [-2420209.912367587, -1691416.9091915314, 2573442.6330078244, 1355287.981259437]
+  },
+  "view": {
+    "resolutions": [640.0, 320.0, 160.0, 80.0, 40.0, 20.0],
+    "defaultResolution": 320
+  },
+  "layers": [
+    {
+      "id": "sectional-pmtile",
+      "name": "VFR Sectional Charts",
+      "optional": false,
+      "defaultVisible": true,
+      "uiLabel": "Sectional Charts",
+      "zIndex": 0,
+      "extent": {
+        "crsUnits": [-2426183.6122942003, -1691416.9091915314, 2573477.659872534, 1355287.981259437]
+      },
+      "release": {
+        "effectiveDate": "2026-01-22"
+      },
+      "tile": {
+        "scheme": "pmtiles",
+        "tileSizePx": 512,
+        "format": "avif",
+        "origin": [-2426183.6122942003, 1355287.981259437],
+        "resolutions": [640.0, 320.0, 160.0, 80.0, 40.0],
+        "minResolution": 20,
+        "maxResolution": 1280,
+        "archiveUrl": "tiles/sectional/sectional-conus.pmtiles"
+      },
+      "attribution": "Federal Aviation Administration, Mission Support Services, Aeronautical Information Services (AJV-A)"
+    },
+    {
+      "id": "tac-pmtile",
+      "name": "VFR Terminal Area Charts",
+      "optional": true,
+      "defaultVisible": true,
+      "uiLabel": "Terminal Area Charts (TAC)",
+      "zIndex": 10,
+      "extent": {
+        "crsUnits": [
+          -2238604.0380118503, -1447376.7219710527, 2047172.710879818, 1140050.1483569108
+        ]
+      },
+      "release": {
+        "effectiveDate": "2026-01-22"
+      },
+      "tile": {
+        "scheme": "pmtiles",
+        "tileSizePx": 512,
+        "format": "avif",
+        "origin": [-2238604.0380118503, 1140050.1483569108],
+        "resolutions": [80, 40, 20],
+        "minResolution": 20,
+        "maxResolution": 160,
+        "archiveUrl": "tiles/tac/tac-conus.pmtiles"
+      },
+      "attribution": "Federal Aviation Administration, Mission Support Services, Aeronautical Information Services (AJV-A)"
+    },
+    {
+      "id": "fly-pmtile",
+      "name": "VFR Fly Charts",
+      "optional": true,
+      "defaultVisible": true,
+      "uiLabel": "Fly Charts",
+      "zIndex": 20,
+      "extent": {
+        "crsUnits": [-2238609.52053198, -1447361.00515603, 1650839.6568777845, 1140047.087069476]
+      },
+      "release": {
+        "effectiveDate": "2026-01-22"
+      },
+      "tile": {
+        "scheme": "pmtiles",
+        "tileSizePx": 512,
+        "format": "avif",
+        "origin": [-2238609.52053198, 1140047.087069476],
+        "resolutions": [80, 40, 20],
+        "minResolution": 20,
+        "maxResolution": 160,
+        "archiveUrl": "tiles/fly/fly-conus.pmtiles"
+      },
+      "attribution": "Federal Aviation Administration, Mission Support Services, Aeronautical Information Services (AJV-A)"
+    },
+    {
+      "id": "digital-obstacles",
+      "name": "FAA Digital Obstacles",
+      "optional": true,
+      "defaultVisible": false,
+      "uiLabel": "Digital Obstacles (DOF)",
+      "zIndex": 20,
+      "extent": {
+        "crsUnits": [-6698991.38, -1707869.78, 4576959.89, 6243265.5]
+      },
+      "release": {
+        "dataCutDate": "2026-02-15"
+      },
+      "tile": {
+        "scheme": "pmtiles",
+        "tileSizePx": 512,
+        "format": "mvt",
+        "vectorLayerKind": "obstacles",
+        "origin": [0, 0],
+        "resolutions": [1280.0, 640.0, 320.0, 160.0, 80.0, 40.0, 20.0],
+        "minResolution": 20,
+        "maxResolution": 160,
+        "archiveMinZoom": 0,
+        "archiveMaxZoom": 10,
+        "archiveUrl": "tiles/obstacles/2026-02-15-obstacles.pmtiles"
+      },
+      "attribution": "Federal Aviation Administration Digital Obstacle File (DOF)"
+    },
+    {
+      "id": "faa-navaids",
+      "name": "FAA Navaids",
+      "optional": true,
+      "defaultVisible": false,
+      "uiLabel": "FAA Navaids (via NASR)",
+      "effectiveDate": "2025-11-27",
+      "zIndex": 25,
+      "extent": {
+        "crsUnits": [-6698991.38, -1707869.78, 4576959.89, 6243265.5]
+      },
+      "tile": {
+        "scheme": "pmtiles",
+        "tileSizePx": 512,
+        "format": "mvt",
+        "vectorLayerKind": "navaids",
+        "origin": [0, 0],
+        "resolutions": [1280.0, 640.0, 320.0, 160.0, 80.0, 40.0, 20.0],
+        "minResolution": 20,
+        "maxResolution": 160,
+        "archiveMinZoom": 0,
+        "archiveMaxZoom": 9,
+        "archiveUrl": "tiles/navaids/march19-navaids.pmtiles"
+      },
+      "attribution": "Federal Aviation Administration NASR AIXM 5.1"
+    },
+    {
+      "id": "appalachian-satellite-imagery",
+      "name": "Appalachian Sentinel-2 Imagery",
+      "optional": true,
+      "defaultVisible": false,
+      "uiLabel": "Appalachian Satellite Imagery",
+      "groupId": "satellite-imagery",
+      "groupLabel": "Satellite Imagery",
+      "zIndex": 1,
+      "extent": {
+        "crsUnits": [777727.1449166838, -583600.2343501301, 1665297.144916684, 353939.7656498699]
+      },
+      "release": {
+        "dataWindow": {
+          "start": "2025-07-01",
+          "end": "2025-09-30"
+        }
+      },
+      "tile": {
+        "scheme": "pmtiles",
+        "tileSizePx": 512,
+        "format": "avif",
+        "origin": [777727.1449166838, 353939.7656498699],
+        "resolutions": [160, 80, 40, 20],
+        "minResolution": 20,
+        "maxResolution": 320,
+        "archiveUrl": "tiles/satellite-imagery/pmtiles_appalachian-range_2025-Q3.pmtiles"
+      },
+      "attribution": "Copernicus Sentinel data 2025"
+    },
+    {
+      "id": "intermountain-satellite-imagery",
+      "name": "Intermountain Sentinel-2 Imagery",
+      "optional": true,
+      "defaultVisible": false,
+      "uiLabel": "Intermountain Satellite Imagery",
+      "groupId": "satellite-imagery",
+      "groupLabel": "Satellite Imagery",
+      "zIndex": 1,
+      "extent": {
+        "crsUnits": [-1491040.4925636936, -485712.3971833562, -647490.4925636936, 394287.6028166438]
+      },
+      "release": {
+        "dataWindow": {
+          "start": "2025-07-01",
+          "end": "2025-09-30"
+        }
+      },
+      "tile": {
+        "scheme": "pmtiles",
+        "tileSizePx": 512,
+        "format": "avif",
+        "origin": [-1491040.4925636936, 394287.6028166438],
+        "resolutions": [160, 80, 40, 20],
+        "minResolution": 20,
+        "maxResolution": 320,
+        "archiveUrl": "tiles/satellite-imagery/pmtiles_intermountain-slc-den_2025-Q3.pmtiles"
+      },
+      "attribution": "Copernicus Sentinel data 2025"
+    },
+    {
+      "id": "western-satellite-imagery",
+      "name": "Western Sentinel-2 Imagery",
+      "optional": true,
+      "defaultVisible": false,
+      "uiLabel": "Western Satellite Imagery",
+      "groupId": "satellite-imagery",
+      "groupLabel": "Satellite Imagery",
+      "zIndex": 1,
+      "extent": {
+        "crsUnits": [
+          -2233185.867750887, -423796.19452169584, -1523305.8677508868, 1240703.8054783042
+        ]
+      },
+      "release": {
+        "dataWindow": {
+          "start": "2025-07-01",
+          "end": "2025-09-30"
+        }
+      },
+      "tile": {
+        "scheme": "pmtiles",
+        "tileSizePx": 512,
+        "format": "avif",
+        "origin": [-2233185.867750887, 1240703.8054783042],
+        "resolutions": [160, 80, 40, 20],
+        "minResolution": 20,
+        "maxResolution": 320,
+        "archiveUrl": "tiles/satellite-imagery/pmtiles_cascades-sierra-nevada-coast_2025-Q3.pmtiles"
+      },
+      "attribution": "Copernicus Sentinel data 2025"
+    },
+    {
+      "id": "blue-mountains-satellite-imagery",
+      "name": "Blue Mountains Sentinel-2 Imagery",
+      "optional": true,
+      "defaultVisible": false,
+      "uiLabel": "Blue Mountains Satellite Imagery",
+      "groupId": "satellite-imagery",
+      "groupLabel": "Satellite Imagery",
+      "zIndex": 1,
+      "extent": {
+        "crsUnits": [-1749948.8665218204, 383909.8259905011, -933398.8665218204, 1134389.825990501]
+      },
+      "release": {
+        "dataWindow": {
+          "start": "2025-07-01",
+          "end": "2025-09-30"
+        }
+      },
+      "tile": {
+        "scheme": "pmtiles",
+        "tileSizePx": 512,
+        "format": "avif",
+        "origin": [-1749948.8665218204, 1134389.825990501],
+        "resolutions": [160, 80, 40, 20],
+        "minResolution": 20,
+        "maxResolution": 320,
+        "archiveUrl": "tiles/satellite-imagery/pmtiles_blue-mountains-northern-rockies_2025-Q3.pmtiles"
+      },
+      "attribution": "Copernicus Sentinel data 2025"
+    },
+    {
+      "id": "6-degree-slope-overlay",
+      "name": "Slope tint",
+      "optional": true,
+      "defaultVisible": false,
+      "uiLabel": "Slope tint",
+      "zIndex": 15,
+      "extent": {
+        "crsUnits": [-2318075.917040967, -699994.5725233168, 1746430.6695264024, 1351964.826110171]
+      },
+      "tile": {
+        "scheme": "pmtiles",
+        "tileSizePx": 512,
+        "format": "avif",
+        "rasterStyle": "slope-shading",
+        "origin": [-2318075.917040967, 1351964.826110171],
+        "resolutions": [40, 20],
+        "minResolution": 20,
+        "maxResolution": 80,
+        "archiveUrl": "tiles/slopes/usgs-1-arc-second-dem-mountainous-regions.pmtiles"
+      },
+      "attribution": "U.S. Geological Survey"
+    }
+  ]
+}

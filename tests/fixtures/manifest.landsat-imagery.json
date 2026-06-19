@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "3.0",
+  "crs": {
+    "value": "PROJCS[\"North_America_Lambert_Conformal_Conic\",GEOGCS[\"NAD83\",DATUM[\"North_American_Datum_1983\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6269\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4269\"]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",40],PARAMETER[\"central_meridian\",-96],PARAMETER[\"standard_parallel_1\",20],PARAMETER[\"standard_parallel_2\",60],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"ESRI\",\"102009\"]]",
+    "wgs84Transform": null
+  },
+  "extent": {
+    "crsUnits": [-2420209.91, -1691416.91, 2573442.63, 1355287.98]
+  },
+  "view": {
+    "resolutions": [640, 320, 160, 80, 40, 20],
+    "defaultResolution": 320
+  },
+  "layers": [
+    {
+      "id": "landsat-imagery",
+      "name": "Satellite Imagery (Landsat)",
+      "optional": true,
+      "defaultVisible": false,
+      "uiLabel": "Satellite Imagery",
+      "zIndex": -1,
+      "release": {
+        "dataWindow": { "start": "2024-04-01", "end": "2024-10-31" }
+      },
+      "extent": {
+        "crsUnits": [-2420209.91, -1691416.91, 2573442.63, 1355287.98]
+      },
+      "tile": {
+        "scheme": "pmtiles",
+        "tileSizePx": 512,
+        "format": "avif",
+        "origin": [-2420209.91, 1355287.98],
+        "resolutions": [640, 320, 160, 80, 40, 20],
+        "minResolution": 20,
+        "maxResolution": 640,
+        "archiveUrl": "tiles/landsat/landsat-imagery.pmtiles"
+      },
+      "attribution": "U.S. Geological Survey"
+    }
+  ]
+}

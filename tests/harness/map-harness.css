@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  background: #f4f5f7;
+}
+
+#map-harness {
+  width: 1024px;
+  height: 768px;
+  margin: 0 auto;
+}
+
+#map-harness tile-viewer-app {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
